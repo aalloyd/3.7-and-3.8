@@ -17,9 +17,9 @@ public class gameModeWindow extends javax.swing.JFrame {
      */
     public gameModeWindow() {
         initComponents();
-        EventListener listenera = new EventListener();
-        playerVsPlayerButton.addActionListener(listenera);
-        playerVsComputerButton.addActionListener(listenera);
+        EventListener listener = new EventListener();
+        playerVsPlayerButton.addActionListener(listener);
+        playerVsComputerButton.addActionListener(listener);
     }
 
     /**
@@ -79,6 +79,7 @@ public class gameModeWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     /**
      * @param args the command line arguments
      */
@@ -120,19 +121,25 @@ public class gameModeWindow extends javax.swing.JFrame {
     private javax.swing.JLabel selectLabel;
     // End of variables declaration//GEN-END:variables
     private class EventListener implements ActionListener{
-        public void actionPerformed(ActionEvent f){
-            if(f.getSource() == playerVsPlayerButton){
-                gameModeWindowButtonActionPerformed();
+        public void actionPerformed(ActionEvent e){
+            if(e.getSource() == playerVsPlayerButton){
+                playerVsPlayerButtonActionPerformed();
             }
-            else if(f.getSource() == playerVsComputerButton){
-                gameModeWindowButtonActionPerformed();
+            else if(e.getSource() == playerVsComputerButton){
+                playerVsComputerButtonActionPerformed();
             }
         }
     }
     
-    private void gameModeWindowButtonActionPerformed(){
+    private void playerVsPlayerButtonActionPerformed(){
         this.setVisible(false);
         numberOfPlayerWindow c = new numberOfPlayerWindow();
+        c.setVisible(true);
+    }
+    
+    private void playerVsComputerButtonActionPerformed(){
+        this.setVisible(false);
+        gamePlayWindow c = new gamePlayWindow();
         c.setVisible(true);
     }
 

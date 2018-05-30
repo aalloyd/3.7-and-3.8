@@ -17,8 +17,8 @@ public class rulesWindow extends javax.swing.JFrame {
      */
     public rulesWindow() {
         initComponents();
-        EventListener listenerc = new EventListener(); 
-        goBackButton.addActionListener(listenerc);
+        EventListener listener = new EventListener(); 
+        goBackButton.addActionListener(listener);
     }
 
     /**
@@ -124,8 +124,8 @@ public class rulesWindow extends javax.swing.JFrame {
     private javax.swing.JTextArea rulesTextArea;
     // End of variables declaration//GEN-END:variables
     private class EventListener implements ActionListener{
-       public void actionPerformed(ActionEvent g){
-           if(g.getSource() == goBackButton){
+       public void actionPerformed(ActionEvent e){
+           if(e.getSource() == goBackButton){
                goBackButtonActionPerformed();
            }
        }
@@ -133,8 +133,8 @@ public class rulesWindow extends javax.swing.JFrame {
     
     private void goBackButtonActionPerformed(){
         this.setVisible(false);
-        startUpWindow d = new startUpWindow();
-        d.setVisible(true);
+        startUpWindow c = new startUpWindow();
+        c.setVisible(true);
     }
 
 }

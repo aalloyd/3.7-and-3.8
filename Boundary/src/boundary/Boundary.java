@@ -5,12 +5,15 @@
  */
 package boundary;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author lloyd
  */
 public class Boundary {
 
+    private ArrayList<player> players = new ArrayList<player>();
     /**
      * @param args the command line arguments
      */
