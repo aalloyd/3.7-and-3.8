@@ -22,6 +22,7 @@ public class numberOfPlayerWindow extends javax.swing.JFrame {
         twoPlayersButton.addActionListener(listenerd);
         threePlayersButton.addActionListener(listenerd);
         fourPlayersButton.addActionListener(listenerd);
+        submitButton.addActionListener(listenerd);
     }
 
     /**
@@ -174,12 +175,15 @@ public ArrayList<String> players = new ArrayList<String>();
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent i){
             if (i.getSource() == twoPlayersButton){
-                for(int j = 0; j < 2; j++){
-                    if(i.getSource() == submitButton){
-                     
-                    }
+                if(i.getSource() == submitButton){
+                    String d = playerNameTextFeild.getText();
+                    players.add(d);
+                    playerNameTextFeild.setText(" ");
                 }
-                numberPlayerButtonsActionPerformed();
+                int x = players.size();
+                if(x == 2){
+                    numberPlayerButtonsActionPerformed();
+                }
             }
             else if (i.getSource() == threePlayersButton){
                 for(int k = 0; k < 3; k++){
