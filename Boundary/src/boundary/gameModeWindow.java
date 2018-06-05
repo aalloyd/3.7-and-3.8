@@ -133,7 +133,7 @@ public class gameModeWindow extends javax.swing.JFrame {
     
     private void playerVsPlayerButtonActionPerformed(){
         this.setVisible(false);
-        numberOfPlayerWindow c = new numberOfPlayerWindow();
+        playerNameWindow c = new playerNameWindow();
         c.setVisible(true);
     }
     
