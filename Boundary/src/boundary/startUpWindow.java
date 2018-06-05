@@ -39,8 +39,8 @@ public class startUpWindow extends javax.swing.JFrame {
         rulesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Boundary");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(750, 500));
 
         titleLabel.setFont(new java.awt.Font("Arial", 3, 60)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(255, 0, 0));
@@ -138,22 +138,22 @@ public class startUpWindow extends javax.swing.JFrame {
 
     private class EventListener implements ActionListener{
        public void actionPerformed(ActionEvent e){
-            if (e.getSource() == startNewGameButton){
-                startNewGameButtonActionPerformed();
+            if (e.getSource() == startNewGameButton){             // If the player clicks the startNewGameButton,
+                goToGameModeWindow();                             // go to the game mode window.
             }    
-            else if (e.getSource() == rulesButton){
-                rulesButtonActionPerformed();
+            else if (e.getSource() == rulesButton){               // If the player clicks the rulesButton,
+                goToRulesWindow();                                // go to the rules window.
             }
         }
     }
     
-    private void startNewGameButtonActionPerformed(){
+    private void goToGameModeWindow(){
         this.setVisible(false);
         gameModeWindow s = new gameModeWindow();
         s.setVisible(true);
     }
     
-    private void rulesButtonActionPerformed(){
+    private void goToRulesWindow(){
         this.setVisible(false);
         rulesWindow b = new rulesWindow();
         b.setVisible(true);

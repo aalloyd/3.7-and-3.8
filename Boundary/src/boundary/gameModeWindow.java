@@ -36,6 +36,7 @@ public class gameModeWindow extends javax.swing.JFrame {
         playerVsComputerButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Boundary");
 
         selectLabel.setFont(new java.awt.Font("Arial", 2, 50)); // NOI18N
         selectLabel.setForeground(new java.awt.Color(255, 0, 0));

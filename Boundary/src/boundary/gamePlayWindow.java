@@ -60,6 +60,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Boundary");
 
         scoreLabel.setFont(new java.awt.Font("Arial", 2, 45)); // NOI18N
         scoreLabel.setForeground(new java.awt.Color(255, 0, 0));

@@ -36,6 +36,7 @@ public class rulesWindow extends javax.swing.JFrame {
         goBackButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Boundary");
 
         rulesTextArea.setColumns(20);
         rulesTextArea.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N

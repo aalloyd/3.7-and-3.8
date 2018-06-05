@@ -38,15 +38,16 @@ public class playerNameWindow extends javax.swing.JFrame {
         continueButton = new javax.swing.JButton();
         playersLabel = new javax.swing.JLabel();
         playersTextFeild = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(750, 500));
+        setTitle("Boundary");
 
         enterAPlayersName.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
         enterAPlayersName.setForeground(new java.awt.Color(255, 0, 0));
         enterAPlayersName.setText("Enter a Players Name:");
 
-        playerNameTextFeild.setFont(new java.awt.Font("Arial", 0, 35)); // NOI18N
+        playerNameTextFeild.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         playerNameTextFeild.setForeground(new java.awt.Color(0, 0, 204));
 
         submitButtonOne.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
@@ -65,6 +66,9 @@ public class playerNameWindow extends javax.swing.JFrame {
         playersTextFeild.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         playersTextFeild.setForeground(new java.awt.Color(0, 204, 0));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jLabel1.setText("You can only have between two and four players");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,21 +77,25 @@ public class playerNameWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(enterAPlayersName)
-                            .addComponent(playersLabel)))
+                        .addComponent(enterAPlayersName))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addComponent(playerNameTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(playersTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(playerNameTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(playersTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(113, 113, 113)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(continueButton)
-                            .addComponent(submitButtonOne))))
+                            .addComponent(submitButtonOne)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(playersLabel)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -99,13 +107,15 @@ public class playerNameWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(playerNameTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(submitButtonOne))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGap(105, 105, 105)
                 .addComponent(playersLabel)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(continueButton)
-                    .addComponent(playersTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playersTextFeild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(continueButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         pack();
@@ -149,6 +159,7 @@ public class playerNameWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton continueButton;
     private javax.swing.JLabel enterAPlayersName;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField playerNameTextFeild;
     private javax.swing.JLabel playersLabel;
     private javax.swing.JTextField playersTextFeild;
@@ -162,12 +173,14 @@ public class playerNameWindow extends javax.swing.JFrame {
     public class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent z){
             if (z.getSource()==submitButtonOne){
-                String a = playerNameTextFeild.getText();
-                b = b + " " + a;
-                players.add(a);
-                x = players.size();
-                playersTextFeild.setText(b);
-                playerNameTextFeild.setText("");
+                if(players.size() < 4){
+                    String a = playerNameTextFeild.getText();
+                    b = b + " " + a;
+                    players.add(a);
+                    x = players.size();
+                    playersTextFeild.setText(b);
+                    playerNameTextFeild.setText("");
+                }
             }
             if (z.getSource()==continueButton){
                 if (x >= 2){
