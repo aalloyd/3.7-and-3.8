@@ -12,13 +12,11 @@ import java.util.ArrayList;
  * @author lloyd
  */
 public class Boundary {
-
-    private ArrayList<player> players = new ArrayList<player>();
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       startUpWindow window = new startUpWindow();
+       startUpWindow window = new startUpWindow();              //When first run show the start up window
        window.setVisible(true);
     }
     

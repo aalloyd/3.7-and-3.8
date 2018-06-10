@@ -18,7 +18,7 @@ public class startUpWindow extends javax.swing.JFrame {
      */
     public startUpWindow() {
         initComponents();
-        EventListener listener = new EventListener(); 
+        EventListener listener = new EventListener();                       //Add event listeners for all the buttons
         startNewGameButton.addActionListener(listener);
         loadPreviousGameButton.addActionListener(listener);
         rulesButton.addActionListener(listener);
@@ -139,7 +139,7 @@ public class startUpWindow extends javax.swing.JFrame {
     private class EventListener implements ActionListener{
        public void actionPerformed(ActionEvent e){
             if (e.getSource() == startNewGameButton){             // If the player clicks the startNewGameButton,
-                goToGameModeWindow();                             // go to the game mode window.
+                goToPlayerNameWindow();                             // go to the game mode window.
             }    
             else if (e.getSource() == rulesButton){               // If the player clicks the rulesButton,
                 goToRulesWindow();                                // go to the rules window.
@@ -147,13 +147,13 @@ public class startUpWindow extends javax.swing.JFrame {
         }
     }
     
-    private void goToGameModeWindow(){
+    private void goToPlayerNameWindow(){                         // Function to go to the player name window
         this.setVisible(false);
-        gameModeWindow s = new gameModeWindow();
+        playerNameWindow s = new playerNameWindow();
         s.setVisible(true);
     }
     
-    private void goToRulesWindow(){
+    private void goToRulesWindow(){                             // Function to go to the rules window
         this.setVisible(false);
         rulesWindow b = new rulesWindow();
         b.setVisible(true);

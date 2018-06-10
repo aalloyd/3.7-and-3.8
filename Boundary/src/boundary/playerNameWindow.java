@@ -7,6 +7,7 @@ package boundary;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.io.*;
 /**
  *
  * @author lloyd
@@ -18,7 +19,7 @@ public class playerNameWindow extends javax.swing.JFrame {
      */
     public playerNameWindow() {
         initComponents();
-        EventListener listenerd = new EventListener();
+        EventListener listenerd = new EventListener();                        // Add event listeners for the buttons
         submitButtonOne.addActionListener(listenerd);
         continueButton.addActionListener(listenerd);
     }
@@ -173,29 +174,46 @@ public class playerNameWindow extends javax.swing.JFrame {
     public class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent z){
             if (z.getSource()==submitButtonOne){
-                if(players.size() < 4){
-                    String a = playerNameTextFeild.getText();
-                    b = b + " " + a;
-                    players.add(a);
-                    x = players.size();
-                    playersTextFeild.setText(b);
-                    playerNameTextFeild.setText("");
+                if(players.size() < 4){                                   // As long as the array list players 
+                    String a = playerNameTextFeild.getText();             // has less than four or less elements 
+                    b = b + " " + a;                                      // get the names of the players from the text feild
+                    players.add(a);                                       // add them to the array list players
+                    x = players.size();                                   // make x the size of the array list
+                    playersTextFeild.setText(b);                          // add the name to the on screen text feild
+                    playerNameTextFeild.setText("");                      // so players can see their names
                 }
             }
-            if (z.getSource()==continueButton){
-                if (x >= 2){
-                    if(x <= 4){
-                        goToGamePlayWindow();
+            if (z.getSource() == continueButton){
+                if (x >= 2){                                            // if there are more than two players
+                    if(x <= 4){                                         // or less than fouor
+                        sendToFile(players);                            // send the array list to a file
+                        goToGamePlayWindow();                           // then go to the next window
                     }
+                }
+                else if( x == 1){
+                    players.add("Computer");                           // if there is only one element in the list
+                    sendToFile(players);                               // add computer to the array list
+                    goToGamePlayWindow();                              // send array list to a file then go to next window
                 }
             }
         }
     }
     
-    private void goToGamePlayWindow(){
+    private void goToGamePlayWindow(){                               // Function to go to the game play window
         this.setVisible(false);
         gamePlayWindow c = new gamePlayWindow();
         c.setVisible(true);
+    }
+    
+    private void sendToFile(ArrayList<String> a){                   // Function to send the arraylist of players to a file,
+        try{                                                        // in order to transfer them to the next window
+            FileOutputStream saveFile = new FileOutputStream("saveFile.sav");
+            ObjectOutputStream save = new ObjectOutputStream(saveFile);
+            save.writeObject(a);
+        }
+        catch(Exception exc){
+            exc.printStackTrace();
+        }
     }
 
 }

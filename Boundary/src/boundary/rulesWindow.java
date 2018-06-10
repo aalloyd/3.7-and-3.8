@@ -17,7 +17,7 @@ public class rulesWindow extends javax.swing.JFrame {
      */
     public rulesWindow() {
         initComponents();
-        EventListener listener = new EventListener(); 
+        EventListener listener = new EventListener();                 // Add an event Listener for the go back button
         goBackButton.addActionListener(listener);
     }
 
@@ -134,7 +134,7 @@ public class rulesWindow extends javax.swing.JFrame {
        }
     }
     
-    private void goBackButtonActionPerformed(){
+    private void goBackButtonActionPerformed(){                            // Function to go back to the start up window
         this.setVisible(false);
         startUpWindow c = new startUpWindow();
         c.setVisible(true);
