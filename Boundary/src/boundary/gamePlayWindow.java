@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Collections;
 /**
  *
  * @author lloyd
@@ -62,6 +63,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         ventureDiceTexPane = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Boundary");
@@ -86,12 +88,16 @@ public class gamePlayWindow extends javax.swing.JFrame {
         playerFourTextPane.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
         jScrollPane4.setViewportView(playerFourTextPane);
 
+        scoreTwoTextPane.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
         jScrollPane5.setViewportView(scoreTwoTextPane);
 
+        scoreThreeTextPane.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
         jScrollPane6.setViewportView(scoreThreeTextPane);
 
+        scoreFourTextPane.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
         jScrollPane7.setViewportView(scoreFourTextPane);
 
+        scoreOneTextPane.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
         jScrollPane8.setViewportView(scoreOneTextPane);
 
         rollBoundaryDiceButton.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
@@ -126,6 +132,10 @@ public class gamePlayWindow extends javax.swing.JFrame {
         startButton.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
         startButton.setForeground(new java.awt.Color(204, 0, 204));
         startButton.setText("Start");
+
+        jButton2.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 204));
+        jButton2.setText("Take Points");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,6 +182,10 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 .addGap(312, 312, 312)
                 .addComponent(startButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,13 +225,15 @@ public class gamePlayWindow extends javax.swing.JFrame {
                                 .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)))
                         .addComponent(rollBoundaryDiceButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(rollVentureDieButon)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(74, 74, 74)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(33, 33, 33)
                 .addComponent(startButton)
                 .addContainerGap())
         );
@@ -264,6 +280,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane boundaryDiceOneTextPane;
     private javax.swing.JTextPane boundaryDiceTwoTextPane;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -295,13 +312,56 @@ public class gamePlayWindow extends javax.swing.JFrame {
     Dice boundaryDiceTwo = new Dice(0);
     Dice ventureDice = new Dice(0);
     ArrayList players = new ArrayList();                                   // and a new array lsit
+    ArrayList scores = new ArrayList();
     
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             if(e.getSource() == startButton){
                 players = readFromFile();
-                String d = (String)players.get(0);
-                playerOneTextPane.setText(d);
+                Collections.shuffle(players);
+                int x = players.size();
+                if (x == 2){
+                    String d = (String)players.get(0);
+                    playerOneTextPane.setText(d);
+                    scoreOneTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(1);
+                    playerTwoTextPane.setText(d);
+                    scoreTwoTextPane.setText(Integer.toString(0));
+                    for(int i = 0; i < 2; i++){
+                        scores.add(0);
+                    }
+                }
+                else if (x == 3){
+                    String d = (String)players.get(0);
+                    playerOneTextPane.setText(d);
+                    scoreOneTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(1);
+                    playerTwoTextPane.setText(d);
+                    scoreTwoTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(2);
+                    playerThreeTextPane.setText(d);
+                    scoreThreeTextPane.setText(Integer.toString(0));
+                    for(int i = 0; i < 3; i++){
+                        scores.add(0);
+                    }
+                }
+                else if (x == 4){
+                    String d = (String)players.get(0);
+                    playerOneTextPane.setText(d);
+                    scoreOneTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(1);
+                    playerTwoTextPane.setText(d);
+                    scoreTwoTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(2);
+                    playerThreeTextPane.setText(d);
+                    scoreThreeTextPane.setText(Integer.toString(0));
+                    d = (String)players.get(3);
+                    playerFourTextPane.setText(d);
+                    scoreFourTextPane.setText(Integer.toString(0));
+                    for(int i = 0; i < 4; i++){
+                        scores.add(0);
+                    }
+                }
                 startButton.hide();
             }
             if(e.getSource() == rollBoundaryDiceButton){                  // the the roll boundary dice button is clicked
