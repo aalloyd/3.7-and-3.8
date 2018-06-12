@@ -190,11 +190,6 @@ public class playerNameWindow extends javax.swing.JFrame {
                         goToGamePlayWindow();                           // then go to the next window
                     }
                 }
-                else if( x == 1){
-                    players.add("Computer");                           // if there is only one element in the list
-                    sendToFile(players);                               // add computer to the array list
-                    goToGamePlayWindow();                              // send array list to a file then go to next window
-                }
             }
         }
     }

@@ -63,7 +63,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         ventureDiceTexPane = new javax.swing.JTextPane();
         jButton1 = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        takePointsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Boundary");
@@ -133,9 +133,9 @@ public class gamePlayWindow extends javax.swing.JFrame {
         startButton.setForeground(new java.awt.Color(204, 0, 204));
         startButton.setText("Start");
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 204));
-        jButton2.setText("Take Points");
+        takePointsButton.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        takePointsButton.setForeground(new java.awt.Color(0, 0, 204));
+        takePointsButton.setText("Take Points");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,17 +162,16 @@ public class gamePlayWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(100, 100, 100))
                             .addComponent(rollBoundaryDiceButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(rollVentureDieButon)
@@ -184,7 +183,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(takePointsButton)
                 .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
@@ -192,47 +191,51 @@ public class gamePlayWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(scoreLabel)
-                            .addComponent(playersLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jButton1)))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(scoreLabel)
+                                    .addComponent(playersLabel1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton1)))
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)))
-                        .addComponent(rollBoundaryDiceButton)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(rollVentureDieButon)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(23, 23, 23))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(37, 37, 37)))
+                                .addComponent(rollBoundaryDiceButton)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(rollVentureDieButon)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(takePointsButton)
                 .addGap(33, 33, 33)
                 .addComponent(startButton)
                 .addContainerGap())
@@ -280,7 +283,6 @@ public class gamePlayWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane boundaryDiceOneTextPane;
     private javax.swing.JTextPane boundaryDiceTwoTextPane;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -305,6 +307,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane scoreThreeTextPane;
     private javax.swing.JTextPane scoreTwoTextPane;
     private javax.swing.JButton startButton;
+    private javax.swing.JButton takePointsButton;
     private javax.swing.JTextPane ventureDiceTexPane;
     // End of variables declaration//GEN-END:variables
 
@@ -313,6 +316,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
     Dice ventureDice = new Dice(0);
     ArrayList players = new ArrayList();                                   // and a new array lsit
     ArrayList scores = new ArrayList();
+    int currentScore = 0;
     
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
@@ -320,7 +324,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 players = readFromFile();
                 Collections.shuffle(players);
                 int x = players.size();
-                if (x == 2){
+                if (x == 2){                                                    // If there are two players
                     String d = (String)players.get(0);
                     playerOneTextPane.setText(d);
                     scoreOneTextPane.setText(Integer.toString(0));
@@ -330,8 +334,12 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     for(int i = 0; i < 2; i++){
                         scores.add(0);
                     }
+                    playerThreeTextPane.setVisible(false);
+                    playerFourTextPane.setVisible(false);
+                    scoreThreeTextPane.setVisible(false);
+                    scoreFourTextPane.setVisible(false);
                 }
-                else if (x == 3){
+                else if (x == 3){                                               // If there are three players
                     String d = (String)players.get(0);
                     playerOneTextPane.setText(d);
                     scoreOneTextPane.setText(Integer.toString(0));
@@ -344,8 +352,10 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     for(int i = 0; i < 3; i++){
                         scores.add(0);
                     }
+                    playerFourTextPane.setVisible(false);
+                    scoreFourTextPane.setVisible(false);
                 }
-                else if (x == 4){
+                else if (x == 4){                                               // If there are four players
                     String d = (String)players.get(0);
                     playerOneTextPane.setText(d);
                     scoreOneTextPane.setText(Integer.toString(0));
@@ -362,15 +372,19 @@ public class gamePlayWindow extends javax.swing.JFrame {
                         scores.add(0);
                     }
                 }
-                startButton.hide();
+                startButton.setVisible(false);
+                rollVentureDieButon.setVisible(false);
+                takePointsButton.setVisible(false);
             }
-            if(e.getSource() == rollBoundaryDiceButton){                  // the the roll boundary dice button is clicked
+            else if(e.getSource() == rollBoundaryDiceButton){                  // the the roll boundary dice button is clicked
                 boundaryDiceOne.number = getRandomNumber(0, 7);           // roll the boundary dice
                 String a = Integer.toString(boundaryDiceOne.number);
                 boundaryDiceOneTextPane.setText(a);                      // and add them to the text feild
                 boundaryDiceTwo.number = getRandomNumber(0, 7);
                 String b = Integer.toString(boundaryDiceTwo.number);
                 boundaryDiceTwoTextPane.setText(b);
+                rollVentureDieButon.setVisible(true);
+                takePointsButton.setVisible(true);
             }
             else if(e.getSource() == rollVentureDieButon){               // if the roll venture dice button is clicked
                 ventureDice.number = getRandomNumber(0, 7);              // roll the dice
@@ -395,5 +409,46 @@ public class gamePlayWindow extends javax.swing.JFrame {
             exc.printStackTrace();
         }
         return a;
+    }
+    
+    private int playersInitalTurn(int a, int b){
+        int c = 0;
+        if(a == b){
+            c = 10;
+        }
+        else if(a == (b -1)){
+            c = 5;
+        }
+        else if(b == (a - 1)){
+            c = 5;
+        }
+        else{
+            c = 0;
+        }
+        return c;
+    }
+    
+    private int playersSecondTurn(int a, int b, int c){
+        int d = 0;
+        if(c == a){
+            if(c == b){
+                d = 25;
+            }
+            else{
+                d = 15;
+            }
+        }
+        else if(c == b){
+            if(c == a){
+                d = 25;
+            }
+            else{
+                d = 15;
+            }
+        }
+        else{
+            d = 0;
+        }
+        return d;
     }
 }
