@@ -22,8 +22,9 @@ public class gamePlayWindow extends javax.swing.JFrame {
         initComponents();
         EventListener listener = new EventListener();                    // Add event Listeners for the buutons
         rollBoundaryDiceButton.addActionListener(listener);
-        rollVentureDieButon.addActionListener(listener);
+        rollVentureDieButton.addActionListener(listener);
         startButton.addActionListener(listener);
+        takePointsButton.addActionListener(listener);
     }
 
     /**
@@ -54,7 +55,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         scoreOneTextPane = new javax.swing.JTextPane();
         rollBoundaryDiceButton = new javax.swing.JButton();
-        rollVentureDieButon = new javax.swing.JButton();
+        rollVentureDieButton = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         boundaryDiceOneTextPane = new javax.swing.JTextPane();
         jScrollPane10 = new javax.swing.JScrollPane();
@@ -104,9 +105,9 @@ public class gamePlayWindow extends javax.swing.JFrame {
         rollBoundaryDiceButton.setForeground(new java.awt.Color(0, 0, 204));
         rollBoundaryDiceButton.setText("Roll Boundary Dice");
 
-        rollVentureDieButon.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
-        rollVentureDieButon.setForeground(new java.awt.Color(0, 0, 204));
-        rollVentureDieButon.setText("Roll Venture Dice");
+        rollVentureDieButton.setFont(new java.awt.Font("Arial", 0, 25)); // NOI18N
+        rollVentureDieButton.setForeground(new java.awt.Color(0, 0, 204));
+        rollVentureDieButton.setText("Roll Venture Dice");
 
         boundaryDiceOneTextPane.setBackground(new java.awt.Color(0, 0, 0));
         boundaryDiceOneTextPane.setFont(new java.awt.Font("Arial", 1, 30)); // NOI18N
@@ -174,7 +175,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                                 .addGap(100, 100, 100))
                             .addComponent(rollBoundaryDiceButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(rollVentureDieButon)
+                                .addComponent(rollVentureDieButton)
                                 .addGap(12, 12, 12)))))
                 .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
@@ -229,7 +230,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                                 .addComponent(rollBoundaryDiceButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(rollVentureDieButon)
+                            .addComponent(rollVentureDieButton)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -300,7 +301,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
     private javax.swing.JTextPane playerTwoTextPane;
     private javax.swing.JLabel playersLabel1;
     private javax.swing.JButton rollBoundaryDiceButton;
-    private javax.swing.JButton rollVentureDieButon;
+    private javax.swing.JButton rollVentureDieButton;
     private javax.swing.JTextPane scoreFourTextPane;
     private javax.swing.JLabel scoreLabel;
     private javax.swing.JTextPane scoreOneTextPane;
@@ -317,13 +318,18 @@ public class gamePlayWindow extends javax.swing.JFrame {
     ArrayList players = new ArrayList();                                   // and a new array lsit
     ArrayList scores = new ArrayList();
     int currentScore = 0;
+    int potentialScore = 0;
+    String currentPlayer = "";
+    boolean playerIs;
+    boolean playerIsTwo;
+    boolean playerIsThree;
     
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             if(e.getSource() == startButton){
                 players = readFromFile();
-                Collections.shuffle(players);
                 int x = players.size();
+                Collections.shuffle(players);
                 if (x == 2){                                                    // If there are two players
                     String d = (String)players.get(0);
                     playerOneTextPane.setText(d);
@@ -372,8 +378,9 @@ public class gamePlayWindow extends javax.swing.JFrame {
                         scores.add(0);
                     }
                 }
+                currentPlayer = (String)players.get(0);
                 startButton.setVisible(false);
-                rollVentureDieButon.setVisible(false);
+                rollVentureDieButton.setVisible(false);
                 takePointsButton.setVisible(false);
             }
             else if(e.getSource() == rollBoundaryDiceButton){                  // the the roll boundary dice button is clicked
@@ -383,13 +390,169 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 boundaryDiceTwo.number = getRandomNumber(0, 7);
                 String b = Integer.toString(boundaryDiceTwo.number);
                 boundaryDiceTwoTextPane.setText(b);
-                rollVentureDieButon.setVisible(true);
+                ventureDiceTexPane.setText("");
+                potentialScore += initScore(boundaryDiceOne.number, boundaryDiceTwo.number);
+                rollVentureDieButton.setVisible(true);
                 takePointsButton.setVisible(true);
             }
-            else if(e.getSource() == rollVentureDieButon){               // if the roll venture dice button is clicked
+            else if(e.getSource() == rollVentureDieButton){               // if the roll venture dice button is clicked
+                int x = players.size();
                 ventureDice.number = getRandomNumber(0, 7);              // roll the dice
-                String c = Integer.toString(ventureDice.number);         // then add the values to the text feild
-                ventureDiceTexPane.setText(c);
+                String z = Integer.toString(ventureDice.number);         // then add the values to the text feild
+                currentScore += secondScore(boundaryDiceOne.number, boundaryDiceTwo.number, ventureDice.number);
+                if(x == 2){
+                    String a = (String)players.get(0);
+                    playerIs = currentPlayer.equals(a);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else{
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore =(int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                else if(x == 3){
+                    String a = (String)players.get(0);
+                    String b = (String)players.get(1);
+                    playerIs = currentPlayer.equals(a);
+                    playerIsTwo = currentPlayer.equals(b);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else if(playerIsTwo == true){
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore = (int)scores.get(2);
+                        currentPlayer = (String)players.get(2);
+                    }
+                    else{
+                        scoreThreeTextPane.setText(Integer.toString(currentScore));
+                        scores.set(2, currentScore);
+                        currentScore = (int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                else if(x == 4){
+                    String a = (String)players.get(0);
+                    String b = (String)players.get(1);
+                    String c = (String)players.get(2);
+                    playerIs = currentPlayer.equals(a);
+                    playerIsTwo = currentPlayer.equals(b);
+                    playerIsThree = currentPlayer.equals(c);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else if(playerIsTwo == true){
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore = (int)scores.get(2);
+                        currentPlayer = (String)players.get(2);
+                    }
+                    else if(playerIsThree == true){
+                        scoreThreeTextPane.setText(Integer.toString(currentScore));
+                        scores.set(2, currentScore);
+                        currentScore = (int)scores.get(3);
+                        currentPlayer = (String)players.get(3);
+                    }
+                    else{
+                        scoreFourTextPane.setText(Integer.toString(currentScore));
+                        scores.set(3, currentScore);
+                        currentScore = (int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                ventureDiceTexPane.setText(z);
+                rollVentureDieButton.setVisible(false);
+                takePointsButton.setVisible(false);
+            }
+            else if(e.getSource() == takePointsButton){
+                int x = players.size();
+                currentScore += potentialScore;
+                if(x == 2){
+                    String a = (String)players.get(0);
+                    playerIs = currentPlayer.equals(a);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else{
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore =(int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                else if(x == 3){
+                    String a = (String)players.get(0);
+                    String b = (String)players.get(1);
+                    playerIs = currentPlayer.equals(a);
+                    playerIsTwo = currentPlayer.equals(b);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else if(playerIsTwo == true){
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore = (int)scores.get(2);
+                        currentPlayer = (String)players.get(2);
+                    }
+                    else{
+                        scoreThreeTextPane.setText(Integer.toString(currentScore));
+                        scores.set(2, currentScore);
+                        currentScore = (int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                else if(x == 4){
+                    String a = (String)players.get(0);
+                    String b = (String)players.get(1);
+                    String c = (String)players.get(2);
+                    playerIs = currentPlayer.equals(a);
+                    playerIsTwo = currentPlayer.equals(b);
+                    playerIsThree = currentPlayer.equals(c);
+                    if(playerIs == true){
+                        scoreOneTextPane.setText(Integer.toString(currentScore));
+                        scores.set(0, currentScore);
+                        currentScore = (int)scores.get(1);
+                        currentPlayer = (String)players.get(1);
+                    }
+                    else if(playerIsTwo == true){
+                        scoreTwoTextPane.setText(Integer.toString(currentScore));
+                        scores.set(1, currentScore);
+                        currentScore = (int)scores.get(2);
+                        currentPlayer = (String)players.get(2);
+                    }
+                    else if(playerIsThree == true){
+                        scoreThreeTextPane.setText(Integer.toString(currentScore));
+                        scores.set(2, currentScore);
+                        currentScore = (int)scores.get(3);
+                        currentPlayer = (String)players.get(3);
+                    }
+                    else{
+                        scoreFourTextPane.setText(Integer.toString(currentScore));
+                        scores.set(3, currentScore);
+                        currentScore = (int)scores.get(0);
+                        currentPlayer = (String)players.get(0);
+                    }
+                }
+                rollVentureDieButton.setVisible(false);
+                takePointsButton.setVisible(false);
             }
         }
     }
@@ -411,16 +574,16 @@ public class gamePlayWindow extends javax.swing.JFrame {
         return a;
     }
     
-    private int playersInitalTurn(int a, int b){
-        int c = 0;
+    private int initScore(int a, int b){
+        int c;
         if(a == b){
+            c = 15;
+        }
+        else if(a ==(b-1)){
             c = 10;
         }
-        else if(a == (b -1)){
-            c = 5;
-        }
-        else if(b == (a - 1)){
-            c = 5;
+        else if(b ==(a-1)){
+            c = 10;
         }
         else{
             c = 0;
@@ -428,26 +591,37 @@ public class gamePlayWindow extends javax.swing.JFrame {
         return c;
     }
     
-    private int playersSecondTurn(int a, int b, int c){
+    private int secondScore(int a, int b, int c){
         int d = 0;
-        if(c == a){
-            if(c == b){
+        if(a == b){
+            if(a == c){
                 d = 25;
             }
             else{
-                d = 15;
+                d = 0;
             }
         }
-        else if(c == b){
-            if(c == a){
-                d = 25;
+        else if(a == c){
+            d = 15;
+        }
+        else if(b == c){
+            d = 15;
+        }
+        else if (a < c){
+            if(c < b){
+                d = 5;
             }
             else{
-                d = 15;
+                d = 0;
             }
         }
-        else{
-            d = 0;
+        else if( b < c){
+            if(c < a){
+                d = 5;
+            }
+            else{
+                d = 0;
+            }
         }
         return d;
     }
