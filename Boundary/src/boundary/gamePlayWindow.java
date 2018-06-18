@@ -391,7 +391,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 String b = Integer.toString(boundaryDiceTwo.number);
                 boundaryDiceTwoTextPane.setText(b);
                 ventureDiceTexPane.setText("");
-                potentialScore += initScore(boundaryDiceOne.number, boundaryDiceTwo.number);
+                potentialScore = initScore(boundaryDiceOne.number, boundaryDiceTwo.number);
                 rollVentureDieButton.setVisible(true);
                 takePointsButton.setVisible(true);
             }
@@ -400,159 +400,169 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 ventureDice.number = getRandomNumber(0, 7);              // roll the dice
                 String z = Integer.toString(ventureDice.number);         // then add the values to the text feild
                 currentScore += secondScore(boundaryDiceOne.number, boundaryDiceTwo.number, ventureDice.number);
-                if(x == 2){
-                    String a = (String)players.get(0);
-                    playerIs = currentPlayer.equals(a);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
-                    }
-                    else{
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore =(int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
-                    }
+                if(currentScore >= 100){
+                    goToGameOverWindow();
                 }
-                else if(x == 3){
-                    String a = (String)players.get(0);
-                    String b = (String)players.get(1);
-                    playerIs = currentPlayer.equals(a);
-                    playerIsTwo = currentPlayer.equals(b);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
+                else{
+                    if(x == 2){
+                        String a = (String)players.get(0);
+                        playerIs = currentPlayer.equals(a);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else{
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore =(int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
-                    else if(playerIsTwo == true){
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore = (int)scores.get(2);
-                        currentPlayer = (String)players.get(2);
+                    else if(x == 3){
+                        String a = (String)players.get(0);
+                        String b = (String)players.get(1);
+                        playerIs = currentPlayer.equals(a);
+                        playerIsTwo = currentPlayer.equals(b);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else if(playerIsTwo == true){
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore = (int)scores.get(2);
+                            currentPlayer = (String)players.get(2);
+                        }
+                        else{
+                            scoreThreeTextPane.setText(Integer.toString(currentScore));
+                            scores.set(2, currentScore);
+                            currentScore = (int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
-                    else{
-                        scoreThreeTextPane.setText(Integer.toString(currentScore));
-                        scores.set(2, currentScore);
-                        currentScore = (int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
+                    else if(x == 4){
+                        String a = (String)players.get(0);
+                        String b = (String)players.get(1);
+                        String c = (String)players.get(2);
+                        playerIs = currentPlayer.equals(a);
+                        playerIsTwo = currentPlayer.equals(b);
+                        playerIsThree = currentPlayer.equals(c);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else if(playerIsTwo == true){
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore = (int)scores.get(2);
+                            currentPlayer = (String)players.get(2);
+                        }
+                        else if(playerIsThree == true){
+                            scoreThreeTextPane.setText(Integer.toString(currentScore));
+                            scores.set(2, currentScore);
+                            currentScore = (int)scores.get(3);
+                            currentPlayer = (String)players.get(3);
+                        }
+                        else{
+                            scoreFourTextPane.setText(Integer.toString(currentScore));
+                            scores.set(3, currentScore);
+                            currentScore = (int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
+                    ventureDiceTexPane.setText(z);
+                    rollVentureDieButton.setVisible(false);
+                    takePointsButton.setVisible(false);
                 }
-                else if(x == 4){
-                    String a = (String)players.get(0);
-                    String b = (String)players.get(1);
-                    String c = (String)players.get(2);
-                    playerIs = currentPlayer.equals(a);
-                    playerIsTwo = currentPlayer.equals(b);
-                    playerIsThree = currentPlayer.equals(c);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
-                    }
-                    else if(playerIsTwo == true){
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore = (int)scores.get(2);
-                        currentPlayer = (String)players.get(2);
-                    }
-                    else if(playerIsThree == true){
-                        scoreThreeTextPane.setText(Integer.toString(currentScore));
-                        scores.set(2, currentScore);
-                        currentScore = (int)scores.get(3);
-                        currentPlayer = (String)players.get(3);
-                    }
-                    else{
-                        scoreFourTextPane.setText(Integer.toString(currentScore));
-                        scores.set(3, currentScore);
-                        currentScore = (int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
-                    }
-                }
-                ventureDiceTexPane.setText(z);
-                rollVentureDieButton.setVisible(false);
-                takePointsButton.setVisible(false);
             }
             else if(e.getSource() == takePointsButton){
                 int x = players.size();
                 currentScore += potentialScore;
-                if(x == 2){
-                    String a = (String)players.get(0);
-                    playerIs = currentPlayer.equals(a);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
-                    }
-                    else{
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore =(int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
-                    }
+                if(currentScore >= 100){
+                    goToGameOverWindow();
                 }
-                else if(x == 3){
-                    String a = (String)players.get(0);
-                    String b = (String)players.get(1);
-                    playerIs = currentPlayer.equals(a);
-                    playerIsTwo = currentPlayer.equals(b);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
+                else{
+                    if(x == 2){
+                        String a = (String)players.get(0);
+                        playerIs = currentPlayer.equals(a);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else{
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore =(int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
-                    else if(playerIsTwo == true){
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore = (int)scores.get(2);
-                        currentPlayer = (String)players.get(2);
+                    else if(x == 3){
+                        String a = (String)players.get(0);
+                        String b = (String)players.get(1);
+                        playerIs = currentPlayer.equals(a);
+                        playerIsTwo = currentPlayer.equals(b);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else if(playerIsTwo == true){
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore = (int)scores.get(2);
+                            currentPlayer = (String)players.get(2);
+                        }
+                        else{
+                            scoreThreeTextPane.setText(Integer.toString(currentScore));
+                            scores.set(2, currentScore);
+                            currentScore = (int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
-                    else{
-                        scoreThreeTextPane.setText(Integer.toString(currentScore));
-                        scores.set(2, currentScore);
-                        currentScore = (int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
+                    else if(x == 4){
+                        String a = (String)players.get(0);
+                        String b = (String)players.get(1);
+                        String c = (String)players.get(2);
+                        playerIs = currentPlayer.equals(a);
+                        playerIsTwo = currentPlayer.equals(b);
+                        playerIsThree = currentPlayer.equals(c);
+                        if(playerIs == true){
+                            scoreOneTextPane.setText(Integer.toString(currentScore));
+                            scores.set(0, currentScore);
+                            currentScore = (int)scores.get(1);
+                            currentPlayer = (String)players.get(1);
+                        }
+                        else if(playerIsTwo == true){
+                            scoreTwoTextPane.setText(Integer.toString(currentScore));
+                            scores.set(1, currentScore);
+                            currentScore = (int)scores.get(2);
+                            currentPlayer = (String)players.get(2);
+                        }
+                        else if(playerIsThree == true){
+                            scoreThreeTextPane.setText(Integer.toString(currentScore));
+                            scores.set(2, currentScore);
+                            currentScore = (int)scores.get(3);
+                            currentPlayer = (String)players.get(3);
+                        }
+                        else{
+                            scoreFourTextPane.setText(Integer.toString(currentScore));
+                            scores.set(3, currentScore);
+                            currentScore = (int)scores.get(0);
+                            currentPlayer = (String)players.get(0);
+                        }
                     }
+                    rollVentureDieButton.setVisible(false);
+                    takePointsButton.setVisible(false);
                 }
-                else if(x == 4){
-                    String a = (String)players.get(0);
-                    String b = (String)players.get(1);
-                    String c = (String)players.get(2);
-                    playerIs = currentPlayer.equals(a);
-                    playerIsTwo = currentPlayer.equals(b);
-                    playerIsThree = currentPlayer.equals(c);
-                    if(playerIs == true){
-                        scoreOneTextPane.setText(Integer.toString(currentScore));
-                        scores.set(0, currentScore);
-                        currentScore = (int)scores.get(1);
-                        currentPlayer = (String)players.get(1);
-                    }
-                    else if(playerIsTwo == true){
-                        scoreTwoTextPane.setText(Integer.toString(currentScore));
-                        scores.set(1, currentScore);
-                        currentScore = (int)scores.get(2);
-                        currentPlayer = (String)players.get(2);
-                    }
-                    else if(playerIsThree == true){
-                        scoreThreeTextPane.setText(Integer.toString(currentScore));
-                        scores.set(2, currentScore);
-                        currentScore = (int)scores.get(3);
-                        currentPlayer = (String)players.get(3);
-                    }
-                    else{
-                        scoreFourTextPane.setText(Integer.toString(currentScore));
-                        scores.set(3, currentScore);
-                        currentScore = (int)scores.get(0);
-                        currentPlayer = (String)players.get(0);
-                    }
-                }
-                rollVentureDieButton.setVisible(false);
-                takePointsButton.setVisible(false);
             }
         }
     }
@@ -602,27 +612,49 @@ public class gamePlayWindow extends javax.swing.JFrame {
             }
         }
         else if(a == c){
-            d = 15;
+            if(a == (b-1)){
+                d = 15;
+            }
+            else if(b == (a-1)){
+                d = 15;
+            }
+            else{
+                d = 10;
+            }
         }
         else if(b == c){
-            d = 15;
+            if(b == (a -1)){
+                d = 15;
+            }
+            else if(a == (b -1)){
+                d = 15;
+            }
+            else{
+                d = 10;
+            }
         }
         else if (a < c){
-            if(c < b){
-                d = 5;
+            if(c > b){
+                d = 0;
             }
             else{
-                d = 0;
+                d = 5;
             }
         }
-        else if( b < c){
-            if(c < a){
-                d = 5;
+        else if(b < c){
+            if(c > a){
+                d = 0;
             }
             else{
-                d = 0;
+                d = 5;
             }
         }
         return d;
+    }
+    
+    private void goToGameOverWindow(){                               // Function to go to the game play window
+        this.setVisible(false);
+        gameOverWindow c = new gameOverWindow();
+        c.setVisible(true);
     }
 }
