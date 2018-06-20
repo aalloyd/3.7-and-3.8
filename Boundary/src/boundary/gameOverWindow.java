@@ -6,6 +6,9 @@
 package boundary;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +23,7 @@ public class gameOverWindow extends javax.swing.JFrame {
         initComponents();
         EventListener listener = new EventListener();
         playAgainButton.addActionListener(listener);
+        seeScoresButton.addActionListener(listener);
     }
 
     /**
@@ -33,6 +37,23 @@ public class gameOverWindow extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         playAgainButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        playerOneTextPane = new javax.swing.JTextPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        playerTwoTextPane = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        playerThreeTextPane = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        playerFourTextPane = new javax.swing.JTextPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        scoreOneTextPane = new javax.swing.JTextPane();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        scoreTwoTextPane = new javax.swing.JTextPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        scoreThreeTextPane = new javax.swing.JTextPane();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        scoreFourTextPane = new javax.swing.JTextPane();
+        seeScoresButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,28 +66,103 @@ public class gameOverWindow extends javax.swing.JFrame {
         playAgainButton.setText("Play Again");
         playAgainButton.setToolTipText("");
 
+        playerOneTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        playerOneTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane1.setViewportView(playerOneTextPane);
+
+        playerTwoTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        playerTwoTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane2.setViewportView(playerTwoTextPane);
+
+        playerThreeTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        playerThreeTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane3.setViewportView(playerThreeTextPane);
+
+        playerFourTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        playerFourTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane4.setViewportView(playerFourTextPane);
+
+        scoreOneTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        scoreOneTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane5.setViewportView(scoreOneTextPane);
+
+        scoreTwoTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        scoreTwoTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane6.setViewportView(scoreTwoTextPane);
+
+        scoreThreeTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        scoreThreeTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane7.setViewportView(scoreThreeTextPane);
+
+        scoreFourTextPane.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        scoreFourTextPane.setForeground(new java.awt.Color(0, 51, 255));
+        jScrollPane8.setViewportView(scoreFourTextPane);
+
+        seeScoresButton.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        seeScoresButton.setForeground(new java.awt.Color(204, 0, 204));
+        seeScoresButton.setText("See Scores");
+        seeScoresButton.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(playAgainButton)))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGap(227, 227, 227)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
+                .addComponent(seeScoresButton)
+                .addGap(39, 39, 39)
+                .addComponent(playAgainButton)
+                .addGap(169, 169, 169))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 307, Short.MAX_VALUE)
-                .addComponent(playAgainButton)
-                .addGap(48, 48, 48))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(playAgainButton)
+                    .addComponent(seeScoresButton))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,20 +205,98 @@ public class gameOverWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JButton playAgainButton;
+    private javax.swing.JTextPane playerFourTextPane;
+    private javax.swing.JTextPane playerOneTextPane;
+    private javax.swing.JTextPane playerThreeTextPane;
+    private javax.swing.JTextPane playerTwoTextPane;
+    private javax.swing.JTextPane scoreFourTextPane;
+    private javax.swing.JTextPane scoreOneTextPane;
+    private javax.swing.JTextPane scoreThreeTextPane;
+    private javax.swing.JTextPane scoreTwoTextPane;
+    private javax.swing.JButton seeScoresButton;
     // End of variables declaration//GEN-END:variables
 
+    ArrayList b = new ArrayList(); 
+    
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent f){
             if(f.getSource() == playAgainButton){
                 goToStartUpWindow();
             }
+            else if(f.getSource() == seeScoresButton){
+                b = readFromFile();
+                int x = b.size();
+                if(x == 4){
+                    String a = (String)b.get(0);
+                    int c = (int)b.get(2);
+                    playerOneTextPane.setText(a);
+                    scoreOneTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(1);
+                    c = (int)b.get(3);
+                    playerTwoTextPane.setText(a);
+                    scoreTwoTextPane.setText(Integer.toString(c));
+                }
+                else if(x == 6){
+                    String a = (String)b.get(0);
+                    int c = (int)b.get(3);
+                    playerOneTextPane.setText(a);
+                    scoreOneTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(1);
+                    c = (int)b.get(4);
+                    playerTwoTextPane.setText(a);
+                    scoreTwoTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(2);
+                    c = (int)b.get(5);
+                    playerThreeTextPane.setText(a);
+                    scoreThreeTextPane.setText(Integer.toString(c));
+                }
+                else if(x == 8){
+                    String a = (String)b.get(0);
+                    int c = (int)b.get(4);
+                    playerOneTextPane.setText(a);
+                    scoreOneTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(1);
+                    c = (int)b.get(5);
+                    playerTwoTextPane.setText(a);
+                    scoreTwoTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(2);
+                    c = (int)b.get(6);
+                    playerThreeTextPane.setText(a);
+                    scoreThreeTextPane.setText(Integer.toString(c));
+                    a = (String)b.get(3);
+                    c = (int)b.get(7);
+                    playerFourTextPane.setText(a);
+                    scoreFourTextPane.setText(Integer.toString(c));
+                }
+            }
         }
+    }
+    
+    private ArrayList readFromFile(){
+        ArrayList a = new ArrayList();
+        try{
+            FileInputStream saveFile = new FileInputStream("saveFile.sav");
+            ObjectInputStream save = new ObjectInputStream(saveFile);
+            a = (ArrayList)save.readObject();
+        }
+        catch(Exception exc){
+            exc.printStackTrace();
+        }
+        return a;
     }
     
     private void goToStartUpWindow(){
         this.setVisible(false);
-        startUpWindow c = new startUpWindow();
+        playerNameWindow c = new playerNameWindow();
         c.setVisible(true);
     }
 
