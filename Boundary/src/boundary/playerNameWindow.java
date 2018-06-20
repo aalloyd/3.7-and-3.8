@@ -167,7 +167,7 @@ public class playerNameWindow extends javax.swing.JFrame {
     private javax.swing.JButton submitButtonOne;
     // End of variables declaration//GEN-END:variables
 
-    public ArrayList<String> players = new ArrayList<String>();
+    public ArrayList players = new ArrayList();
     private String b = "";
     private int x = 0;
     
@@ -185,8 +185,8 @@ public class playerNameWindow extends javax.swing.JFrame {
             }
             if (z.getSource() == continueButton){
                 if (x >= 2){                                            // if there are more than two players
-                    if(x <= 4){                                         // or less than fouor
-                        sendToFile(players);                            // send the array list to a file
+                    if(x <= 4){                                         // or less than four           
+                        sendToFile(players);
                         goToGamePlayWindow();                           // then go to the next window
                     }
                 }
@@ -200,7 +200,7 @@ public class playerNameWindow extends javax.swing.JFrame {
         c.setVisible(true);
     }
     
-    private void sendToFile(ArrayList<String> a){                   // Function to send the arraylist of players to a file,
+    private void sendToFile(ArrayList a){                   // Function to send the arraylist of players to a file,
         try{                                                        // in order to transfer them to the next window
             FileOutputStream saveFile = new FileOutputStream("saveFile.sav");
             ObjectOutputStream save = new ObjectOutputStream(saveFile);
