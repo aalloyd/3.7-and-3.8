@@ -391,6 +391,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 potentialScore = initScore(boundaryDiceOne.number, boundaryDiceTwo.number);
                 rollVentureDieButton.setVisible(true);
                 takePointsButton.setVisible(true);
+                rollBoundaryDiceButton.setVisible(false);
             }
             else if(e.getSource() == rollVentureDieButton){               // if the roll venture dice button is clicked
                 int x = players.size();
@@ -531,6 +532,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     ventureDiceTexPane.setText(z);
                     rollVentureDieButton.setVisible(false);
                     takePointsButton.setVisible(false);
+                    rollBoundaryDiceButton.setVisible(true);
                 }
             }
             else if(e.getSource() == takePointsButton){
@@ -669,6 +671,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     }
                     rollVentureDieButton.setVisible(false);
                     takePointsButton.setVisible(false);
+                    rollBoundaryDiceButton.setVisible(true);
                 }
             }
         }
