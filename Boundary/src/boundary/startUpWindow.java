@@ -20,7 +20,6 @@ public class startUpWindow extends javax.swing.JFrame {
         initComponents();
         EventListener listener = new EventListener();                       //Add event listeners for all the buttons
         startNewGameButton.addActionListener(listener);
-        loadPreviousGameButton.addActionListener(listener);
         rulesButton.addActionListener(listener);
     }
 
@@ -35,7 +34,6 @@ public class startUpWindow extends javax.swing.JFrame {
 
         titleLabel = new javax.swing.JLabel();
         startNewGameButton = new javax.swing.JButton();
-        loadPreviousGameButton = new javax.swing.JButton();
         rulesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,10 +49,6 @@ public class startUpWindow extends javax.swing.JFrame {
         startNewGameButton.setForeground(new java.awt.Color(0, 0, 204));
         startNewGameButton.setText("Start New Game");
 
-        loadPreviousGameButton.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
-        loadPreviousGameButton.setForeground(new java.awt.Color(0, 0, 204));
-        loadPreviousGameButton.setText("Load Previous Game");
-
         rulesButton.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
         rulesButton.setForeground(new java.awt.Color(0, 0, 204));
         rulesButton.setText("Rules");
@@ -64,31 +58,25 @@ public class startUpWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(startNewGameButton)
-                .addGap(247, 247, 247))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(222, Short.MAX_VALUE)
-                .addComponent(loadPreviousGameButton)
-                .addGap(217, 217, 217))
             .addGroup(layout.createSequentialGroup()
                 .addGap(321, 321, 321)
                 .addComponent(rulesButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(startNewGameButton)
+                .addGap(249, 249, 249))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(titleLabel)
-                .addGap(84, 84, 84)
+                .addGap(103, 103, 103)
                 .addComponent(startNewGameButton)
-                .addGap(34, 34, 34)
-                .addComponent(loadPreviousGameButton)
-                .addGap(35, 35, 35)
+                .addGap(59, 59, 59)
                 .addComponent(rulesButton)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,7 +118,6 @@ public class startUpWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton loadPreviousGameButton;
     private javax.swing.JButton rulesButton;
     private javax.swing.JButton startNewGameButton;
     private javax.swing.JLabel titleLabel;
