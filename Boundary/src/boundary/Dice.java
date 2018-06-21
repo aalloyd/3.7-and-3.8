@@ -13,6 +13,6 @@ public class Dice {
     public int number;
     
     public Dice(int anumber){
-        this.number = anumber;
+        this.number = anumber;                   // gets a number for the dice. 
     }
 }

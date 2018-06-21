@@ -70,13 +70,13 @@ public class startUpWindow extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(42, 42, 42)
                 .addComponent(titleLabel)
-                .addGap(103, 103, 103)
+                .addGap(107, 107, 107)
                 .addComponent(startNewGameButton)
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
                 .addComponent(rulesButton)
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         pack();

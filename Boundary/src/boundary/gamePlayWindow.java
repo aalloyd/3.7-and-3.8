@@ -323,7 +323,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
     
     private class EventListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            if(e.getSource() == startButton){
+            if(e.getSource() == startButton){                                   // The start button must be clicked to begin the game. 
                 players = readFromFile();
                 int x = players.size();
                 Collections.shuffle(players);
@@ -376,9 +376,11 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     }
                 }
                 currentPlayer = (String)players.get(0);
+                currentScore = 0;
                 startButton.setVisible(false);
                 rollVentureDieButton.setVisible(false);
                 takePointsButton.setVisible(false);
+                pressStartButtonLabel.setVisible(false);
             }
             else if(e.getSource() == rollBoundaryDiceButton){                  // the the roll boundary dice button is clicked
                 boundaryDiceOne.number = getRandomNumber(0, 7);           // roll the boundary dice
@@ -398,9 +400,9 @@ public class gamePlayWindow extends javax.swing.JFrame {
                 ventureDice.number = getRandomNumber(0, 7);              // roll the dice
                 String z = Integer.toString(ventureDice.number);         // then add the values to the text feild
                 currentScore += secondScore(boundaryDiceOne.number, boundaryDiceTwo.number, ventureDice.number);
-                if(currentScore >= 100){
-                    if(x == 2){
-                        String a = (String)players.get(0);
+                if(currentScore >= 100){                                 // checks if the currrent score is 100 or above before moving on.
+                    if(x == 2){                                          // if so change the players score, so it can be seen on the final screen.
+                        String a = (String)players.get(0);               // then send it to the file and go to the next window.
                         playerIs = currentPlayer.equals(a);
                         if(playerIs == true){
                             scores.set(0, currentScore);
@@ -535,12 +537,12 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     rollBoundaryDiceButton.setVisible(true);
                 }
             }
-            else if(e.getSource() == takePointsButton){
-                int x = players.size();
+            else if(e.getSource() == takePointsButton){                         // if the player just wants to take the points. 
+                int x = players.size();                                         // change the score and players. 
                 currentScore += potentialScore;
-                if(currentScore >= 100){
-                    if(x == 2){
-                        String a = (String)players.get(0);
+                if(currentScore >= 100){                                        // checks if the currrent score is 100 or above before moving on. 
+                    if(x == 2){                                                 // if so change the players score, so it can be seen on the final screen. 
+                        String a = (String)players.get(0);                      // then send it to the file and go to the next window. 
                         playerIs = currentPlayer.equals(a);
                         if(playerIs == true){
                             scores.set(0, currentScore);
@@ -597,7 +599,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                     goToGameOverWindow();
                 }
                 else{
-                    if(x == 2){
+                    if(x == 2){                                                 //switching if there are two players. 
                         String a = (String)players.get(0);
                         playerIs = currentPlayer.equals(a);
                         if(playerIs == true){
@@ -613,7 +615,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                             currentPlayer = (String)players.get(0);
                         }
                     }
-                    else if(x == 3){
+                    else if(x == 3){                                            // switching if there are three players
                         String a = (String)players.get(0);
                         String b = (String)players.get(1);
                         playerIs = currentPlayer.equals(a);
@@ -637,7 +639,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                             currentPlayer = (String)players.get(0);
                         }
                     }
-                    else if(x == 4){
+                    else if(x == 4){                                            // switching if there is four players
                         String a = (String)players.get(0);
                         String b = (String)players.get(1);
                         String c = (String)players.get(2);
@@ -669,7 +671,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
                             currentPlayer = (String)players.get(0);
                         }
                     }
-                    rollVentureDieButton.setVisible(false);
+                    rollVentureDieButton.setVisible(false);                     // makes the appropriate buttons visible or invisisble 
                     takePointsButton.setVisible(false);
                     rollBoundaryDiceButton.setVisible(true);
                 }
@@ -677,11 +679,11 @@ public class gamePlayWindow extends javax.swing.JFrame {
         }
     }
     
-    private int getRandomNumber(int a, int b){
+    private int getRandomNumber(int a, int b){                                  // function to roll the dice. 
         return (int)(Math.random() * ((a - b) + 1) + b);
     }
     
-    private ArrayList readFromFile(){
+    private ArrayList readFromFile(){                                          // reads the players from the file, gets them from the previuos screen. 
         ArrayList a = new ArrayList();
         try{
             FileInputStream saveFile = new FileInputStream("saveFile.sav");
@@ -694,7 +696,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         return a;
     }
     
-    private void sendToFile(ArrayList a){
+    private void sendToFile(ArrayList a){                                       // sends the players and scores to a file so they can appear on the final screen
         try{
             FileOutputStream saveFile = new FileOutputStream("saveFile.sav");
             ObjectOutputStream save = new ObjectOutputStream(saveFile);
@@ -705,7 +707,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         }
     }
     
-    private int initScore(int a, int b){
+    private int initScore(int a, int b){                         // intial scoring function, used when the boundary dice are rolled.
         int c;
         if(a == b){
             c = 15;
@@ -722,7 +724,7 @@ public class gamePlayWindow extends javax.swing.JFrame {
         return c;
     }
     
-    private int secondScore(int a, int b, int c){
+    private int secondScore(int a, int b, int c){            // second scoring function, only used when the player chooses to roll the venture die. 
         int d = 0;
         if(a == b){
             if(a == c){
